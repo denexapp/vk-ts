@@ -27,7 +27,7 @@ const generateVkLink = (methodName: string, accessToken: string, params?: VkLink
   const transformedParams = transformParams(params)
 
   const query = new URLSearchParams({
-    accessToken,
+    access_token: accessToken,
     v: consts.vkApiVersion,
     ...transformedParams
   })
