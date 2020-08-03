@@ -1,4 +1,5 @@
 import { JsonDecoder } from 'ts.data.json'
+import VK from '..'
 import makeVkRequest from '../utils/makeVkRequest'
 
 export interface AccountGetProfileInfoResponse {
@@ -13,10 +14,10 @@ const accountGetProfileInfoDecoder = JsonDecoder.object<AccountGetProfileInfoRes
   id: JsonDecoder.number
 }, 'account.getProfileInfo decoder')
 
-const accountGetProfileInfo = (accessToken: string) => async (): Promise<AccountGetProfileInfoResponse> => (
+const accountGetProfileInfo = async (vk: VK): Promise<AccountGetProfileInfoResponse> => (
   await makeVkRequest(
     'account.getProfileInfo',
-    accessToken,
+    vk.accessToken,
     accountGetProfileInfoDecoder
   )
 )

@@ -1,4 +1,5 @@
 import { JsonDecoder } from 'ts.data.json'
+import VK from '..'
 import makeVkRequest from '../utils/makeVkRequest'
 
 export interface ConversationMember {
@@ -32,10 +33,10 @@ const messagesGetConversationMembersDecoder = JsonDecoder.object<MessagesGetConv
   groups: JsonDecoder.array(JsonDecoder.succeed, 'Groups decoder')
 }, 'messages.getConversationMembers decoder')
 
-const messagesGetConversationMembers = (accessToken: string) => async (peerId: number): Promise<MessagesGetConversationMembersResponse> => (
+const messagesGetConversationMembers = async (vk: VK, peerId: number): Promise<MessagesGetConversationMembersResponse> => (
   await makeVkRequest(
     'messages.getConversationMembers',
-    accessToken,
+    vk.accessToken,
     messagesGetConversationMembersDecoder,
     { peer_id: peerId }
   )

@@ -1,4 +1,5 @@
 import { JsonDecoder } from 'ts.data.json'
+import VK from '..'
 import makeVkRequest from '../utils/makeVkRequest'
 
 export type DeletedStatus = 0 | 1
@@ -13,10 +14,10 @@ const messagesDeleteDecoder = JsonDecoder.dictionary<DeletedStatus>(
   'messages.delete decoder'
 )
 
-const messagesDelete = (accessToken: string) => async (id: number, delete_for_all: boolean): Promise<MessagesDeleteResponse> => (
+const messagesDelete = async (vk: VK, id: number, delete_for_all: boolean): Promise<MessagesDeleteResponse> => (
   await makeVkRequest(
     'messages.delete',
-    accessToken,
+    vk.accessToken,
     messagesDeleteDecoder,
     {
       message_ids: id,

@@ -10,10 +10,10 @@ class VK {
     this.accessToken = accessToken
   }
 
-  messagesDelete = messagesDelete(this.accessToken)
-  messagesGetConversationMembers = messagesGetConversationMembers(this.accessToken)
-  messagesSend = messagesSend(this.accessToken)
-  accountGetProfileInfo = accountGetProfileInfo(this.accessToken)
+  messagesDelete = messagesDelete.bind(this, this)
+  messagesGetConversationMembers = messagesGetConversationMembers.bind(this, this)
+  messagesSend = messagesSend.bind(this, this)
+  accountGetProfileInfo = accountGetProfileInfo.bind(this, this)
 }
 
 export default VK

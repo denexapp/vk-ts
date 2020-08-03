@@ -1,15 +1,16 @@
 import { JsonDecoder } from 'ts.data.json'
-import makeVkRequest from '../utils/makeVkRequest'
+import VK from '..'
 import getRandomInt from '../utils/getRandomInt'
+import makeVkRequest from '../utils/makeVkRequest'
 
 export type MessagesSendResponse = number
 
 const messageSendDecoder = JsonDecoder.number
 
-const messagesSend = (accessToken: string) => async (peerId: number, message: string): Promise<MessagesSendResponse> => (
-  await makeVkRequest(
+const messagesSend = async (vk: VK, peerId: number, message: string): Promise<MessagesSendResponse> => {
+  return await makeVkRequest(
     'messages.send',
-    accessToken,
+    vk.accessToken,
     messageSendDecoder,
     {
       message,
@@ -17,6 +18,6 @@ const messagesSend = (accessToken: string) => async (peerId: number, message: st
       random_id: getRandomInt(0, 999999999999999).toString(10)
     }
   )
-)
+}
 
 export default messagesSend
