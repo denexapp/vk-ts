@@ -32,7 +32,7 @@ const messagesSearch = async (vk: VK, query: string): Promise<MessagesSearchResp
     vk.accessToken,
     messagesSearchDecoder,
     {
-      query
+      q: query
     }
   )
 )
