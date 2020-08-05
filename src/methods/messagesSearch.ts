@@ -1,5 +1,5 @@
 import { JsonDecoder } from 'ts.data.json'
-import { Message, messageDecoder } from 'utils/typesAndDecoders/message'
+import { Message, messageDecoder } from '../utils/typesAndDecoders/message'
 import VK from '..'
 import makeVkRequest from '../utils/makeVkRequest'
 
