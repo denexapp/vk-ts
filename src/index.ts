@@ -20,4 +20,5 @@ class VK {
   accountGetProfileInfo = accountGetProfileInfo.bind(this, this)
 }
 
+export { VkErrorCode, default as VkError } from './utils/vkError'
 export default VK
