@@ -1,4 +1,5 @@
 import { JsonDecoder } from 'ts.data.json'
+import VkError, { VkErrorCode } from './vkError'
 
 const decode = <T>(body: unknown, decoder: JsonDecoder.Decoder<T>): T => {
   const result = decoder.decode(body)
@@ -8,7 +9,7 @@ const decode = <T>(body: unknown, decoder: JsonDecoder.Decoder<T>): T => {
 Can't decode this object:
 ${JSON.stringify(body)}
 `)
-    throw new Error(result.error)
+    throw new VkError(VkErrorCode.VkTsUnknownError, result.error)
   }
   
   return result.value

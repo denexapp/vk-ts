@@ -2,6 +2,7 @@ import fetch from 'node-fetch'
 import { JsonDecoder } from 'ts.data.json'
 import decode from './decode'
 import generateVkLink, { VkLinkParams } from './generateVkLink'
+import VkError, { VkErrorCode } from './vkError'
 import vkResponseDecoder from './vkResponseDecoder'
 
 const makeVkRequest = async <T>(
@@ -13,7 +14,7 @@ const makeVkRequest = async <T>(
   const response = await fetch(generateVkLink(methodName, accessToken, params))
 
   if (!response.ok) {
-    throw new Error(`Unexpected response status ${response.status}`)
+    throw new VkError(VkErrorCode.VkTsUnknownError, `Unexpected response status ${response.status}`)
   }
 
   const json = await response.json()
@@ -21,7 +22,13 @@ const makeVkRequest = async <T>(
   const value = decode(json, vkResponseDecoder)
 
   if (!value.success) {
-    throw new Error(`VK api responded with error:\nCode: ${value.error.error_code}\n${value.error.error_msg}`)
+    if (value.error.error_code === VkErrorCode.NoAccessToTheConversation) {
+      throw new VkError(VkErrorCode.NoAccessToTheConversation, value.error.error_msg)
+    }
+    throw new VkError(
+      VkErrorCode.NoAccessToTheConversation,
+      `VK api responded with error:\nCode: ${value.error.error_code}\n${value.error.error_msg}`
+    )
   }
 
   return decode(value.response, decoder)
