@@ -5,9 +5,12 @@ export interface VkSucessfulResponse {
   response: unknown
 }
 
-const vkSucessfulResponseDecoder = JsonDecoder.object<VkSucessfulResponse>({
-  success: JsonDecoder.constant(true),
-  response: JsonDecoder.succeed
-}, 'VK sucessful response decoder')
+const vkSucessfulResponseDecoder = JsonDecoder.object<VkSucessfulResponse>(
+  {
+    success: JsonDecoder.constant(true),
+    response: JsonDecoder.succeed,
+  },
+  'VK sucessful response decoder'
+)
 
 export default vkSucessfulResponseDecoder

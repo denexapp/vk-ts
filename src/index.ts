@@ -4,6 +4,7 @@ import messagesGetByConversationMessageId from './methods/messagesGetByConversat
 import messagesGetConversationMembers from './methods/messagesGetConversationMembers'
 import messagesSearch from './methods/messagesSearch'
 import messagesSend from './methods/messagesSend'
+import usersGet from './methods/usersGet'
 
 class VK {
   accessToken: string
@@ -18,7 +19,8 @@ class VK {
   messagesSearch = messagesSearch.bind(this, this)
   messagesSend = messagesSend.bind(this, this)
   accountGetProfileInfo = accountGetProfileInfo.bind(this, this)
+  usersGet = usersGet.bind(this, this)
 }
 
-export { VkErrorCode, default as VkError } from './utils/vkError'
+export { default as VkError, VkErrorCode } from './utils/vkError'
 export default VK

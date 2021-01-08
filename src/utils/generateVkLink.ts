@@ -1,24 +1,26 @@
 import consts from '../utils/consts'
 
-export interface VkLinkParams { [key: string]: string | number | boolean }
+export interface VkLinkParams {
+  [key: string]: string | number | boolean
+}
 
-interface TransformedParams { [key: string]: string | number }
+interface TransformedParams {
+  [key: string]: string | number
+}
 
 const transformParams = (params?: VkLinkParams) => {
   if (params === undefined) {
-    return { }
+    return {}
   }
 
-  const result = Object
-    .entries(params)
-    .reduce<TransformedParams>((result, [name, value]) => {
-      if (typeof value === 'boolean') {
-        result[name] = value ? 1 : 0
-      } else {
-        result[name] = value
-      }
-      return result
-    }, { })
+  const result = Object.entries(params).reduce<TransformedParams>((result, [name, value]) => {
+    if (typeof value === 'boolean') {
+      result[name] = value ? 1 : 0
+    } else {
+      result[name] = value
+    }
+    return result
+  }, {})
 
   return result
 }
@@ -29,7 +31,7 @@ const generateVkLink = (methodName: string, accessToken: string, params?: VkLink
   const query = new URLSearchParams({
     access_token: accessToken,
     v: consts.vkApiVersion,
-    ...transformedParams
+    ...transformedParams,
   })
 
   return `https://api.vk.com/method/${methodName}?${query}`

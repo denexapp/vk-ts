@@ -8,25 +8,27 @@ export interface MessagesGetByConversationMessageIdResponse {
   items: Array<Message>
 }
 
-const messagesGetByConversationMessageIdDecoder = JsonDecoder.object<MessagesGetByConversationMessageIdResponse>({
-  count: JsonDecoder.number,
-  items: JsonDecoder.array(messageDecoder, 'Messages decoder')
-}, 'messages.getByConversationMessageId Decoder')
+const messagesGetByConversationMessageIdDecoder = JsonDecoder.object<MessagesGetByConversationMessageIdResponse>(
+  {
+    count: JsonDecoder.number,
+    items: JsonDecoder.array(messageDecoder, 'Messages decoder'),
+  },
+  'messages.getByConversationMessageId Decoder'
+)
 
 const messagesGetByConversationMessageId = async (
   vk: VK,
   peerId: number,
   conversationMessageId: number
-): Promise<MessagesGetByConversationMessageIdResponse> => (
+): Promise<MessagesGetByConversationMessageIdResponse> =>
   await makeVkRequest(
     'messages.getByConversationMessageId',
     vk.accessToken,
     messagesGetByConversationMessageIdDecoder,
     {
       peer_id: peerId,
-      conversation_message_ids: conversationMessageId
+      conversation_message_ids: conversationMessageId,
     }
   )
-)
 
 export default messagesGetByConversationMessageId
