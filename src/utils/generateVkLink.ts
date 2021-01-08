@@ -1,7 +1,7 @@
 import consts from '../utils/consts'
 
 export interface VkLinkParams {
-  [key: string]: string | number | boolean
+  [key: string]: string | number | boolean | undefined
 }
 
 interface TransformedParams {
@@ -16,7 +16,7 @@ const transformParams = (params?: VkLinkParams) => {
   const result = Object.entries(params).reduce<TransformedParams>((result, [name, value]) => {
     if (typeof value === 'boolean') {
       result[name] = value ? 1 : 0
-    } else {
+    } else if (typeof value === 'string' || typeof value === 'number') {
       result[name] = value
     }
     return result
