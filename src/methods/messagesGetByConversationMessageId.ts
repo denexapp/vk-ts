@@ -1,18 +1,12 @@
-import { JsonDecoder } from 'ts.data.json'
-import { Message, messageDecoder } from '../utils/typesAndDecoders/message'
 import VK from '..'
 import makeVkRequest from '../utils/makeVkRequest'
+import { ArrayResponse, arrayResponseDecoder } from '../utils/typesAndDecoders/arrayResponse'
+import { Message, messageDecoder } from '../utils/typesAndDecoders/message'
 
-export interface MessagesGetByConversationMessageIdResponse {
-  count: number
-  items: Array<Message>
-}
+export type MessagesGetByConversationMessageIdResponse = ArrayResponse<Message>
 
-const messagesGetByConversationMessageIdDecoder = JsonDecoder.object<MessagesGetByConversationMessageIdResponse>(
-  {
-    count: JsonDecoder.number,
-    items: JsonDecoder.array(messageDecoder, 'Messages decoder'),
-  },
+const messagesGetByConversationMessageIdDecoder = arrayResponseDecoder<Message>(
+  messageDecoder,
   'messages.getByConversationMessageId Decoder'
 )
 
