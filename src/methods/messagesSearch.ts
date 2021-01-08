@@ -1,6 +1,6 @@
 import VK from '..'
 import makeVkRequest from '../utils/makeVkRequest'
-import { ArrayResponse, arrayResponseDecoder } from "../utils/typesAndDecoders/arrayResponse"
+import { ArrayResponse, arrayResponseDecoder } from '../utils/typesAndDecoders/arrayResponse'
 import { Message, messageDecoder } from '../utils/typesAndDecoders/message'
 
 export type MessagesSearchResponse = ArrayResponse<Message>

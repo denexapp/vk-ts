@@ -1,4 +1,5 @@
 import accountGetProfileInfo from './methods/accountGetProfileInfo'
+import docsGet from './methods/docsGet'
 import messagesDelete from './methods/messagesDelete'
 import messagesGetByConversationMessageId from './methods/messagesGetByConversationMessageId'
 import messagesGetConversationMembers from './methods/messagesGetConversationMembers'
@@ -20,6 +21,7 @@ class VK {
   messagesSend = messagesSend.bind(this, this)
   accountGetProfileInfo = accountGetProfileInfo.bind(this, this)
   usersGet = usersGet.bind(this, this)
+  docsGet = docsGet.bind(this, this)
 }
 
 export { default as VkError, VkErrorCode } from './utils/vkError'
