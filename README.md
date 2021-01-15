@@ -1,6 +1,7 @@
 # VK TypeScript
 Typesafe lightweight library to make requests to VK api.
 
+[![GitHub license](https://img.shields.io/github/license/denexapp/vk-ts)](https://github.com/denexapp/vk-ts/blob/master/LICENSE) [![npm version](https://img.shields.io/npm/v/vk-ts.svg)](https://www.npmjs.com/package/vk-ts)
 
 ## Installation
 Using npm:
@@ -26,10 +27,7 @@ console.log(`Hello, ${info.first_name}!`)
 ## Pros
 * Typesafe
 * Lightweight
-* Works in browser and node (react-native is untested)
 
 ## Cons
 * Small coverage of api
 * No built-in authentication
-
-Created by @denexapp, MIT license
