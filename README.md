@@ -14,12 +14,12 @@ yarn add vk-ts
 ```
 ## Usage
 ```typescript
-import Vk from 'vk-ts'
+import VK from 'vk-ts'
 
 // Learn how to get access token here:
 // https://vk.com/dev/access_token
 const accessToken = 'my_vk_api_token'
-const vk = new Vk(accessToken)
+const vk = new VK(accessToken)
 
 const info = await vk.accountGetProfileInfo()
 console.log(`Hello, ${info.first_name}!`)
