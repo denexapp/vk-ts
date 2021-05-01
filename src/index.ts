@@ -27,4 +27,5 @@ class VK {
 }
 
 export { default as VkError, VkErrorCode } from './utils/vkError'
+export { Sex } from './methods/usersGet'
 export default VK
