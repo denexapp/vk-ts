@@ -1,4 +1,4 @@
-import fetch from 'node-fetch'
+import fetch from 'cross-fetch'
 import { JsonDecoder } from 'ts.data.json'
 import decode from './decode'
 import generateVkLink, { VkLinkParams } from './generateVkLink'
@@ -26,7 +26,7 @@ const makeVkRequest = async <T>(
       throw new VkError(VkErrorCode.NoAccessToTheConversation, value.error.error_msg)
     }
     throw new VkError(
-      VkErrorCode.NoAccessToTheConversation,
+      VkErrorCode.VkTsUnknownError,
       `VK api responded with error:\nCode: ${value.error.error_code}\n${value.error.error_msg}`
     )
   }

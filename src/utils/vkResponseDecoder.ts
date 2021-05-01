@@ -4,9 +4,9 @@ import vkSucessfulResponseDecoder, { VkSucessfulResponse } from './vkSucessfulRe
 
 type VkResponse = VkErrorResponse | VkSucessfulResponse
 
-const vkResponseDecoder = JsonDecoder.oneOf<VkResponse>([
-  vkErrorResponseDecoder,
-  vkSucessfulResponseDecoder
-], 'VK response decoder')
+const vkResponseDecoder = JsonDecoder.oneOf<VkResponse>(
+  [vkErrorResponseDecoder, vkSucessfulResponseDecoder],
+  'VK response decoder'
+)
 
 export default vkResponseDecoder

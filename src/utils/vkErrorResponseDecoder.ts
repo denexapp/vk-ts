@@ -10,14 +10,20 @@ export interface VkErrorResponse {
   error: Error
 }
 
-const errorDecoder = JsonDecoder.object<Error>({
-  error_code: JsonDecoder.number,
-  error_msg: JsonDecoder.string
-}, 'Error decoder')
+const errorDecoder = JsonDecoder.object<Error>(
+  {
+    error_code: JsonDecoder.number,
+    error_msg: JsonDecoder.string,
+  },
+  'Error decoder'
+)
 
-const vkErrorResponseDecoder = JsonDecoder.object<VkErrorResponse>({
-  success: JsonDecoder.constant(false),
-  error: errorDecoder
-}, 'VK error response decoder')
+const vkErrorResponseDecoder = JsonDecoder.object<VkErrorResponse>(
+  {
+    success: JsonDecoder.constant(false),
+    error: errorDecoder,
+  },
+  'VK error response decoder'
+)
 
 export default vkErrorResponseDecoder

@@ -8,18 +8,16 @@ export interface AccountGetProfileInfoResponse {
   id: number
 }
 
-const accountGetProfileInfoDecoder = JsonDecoder.object<AccountGetProfileInfoResponse>({
-  first_name: JsonDecoder.string,
-  last_name: JsonDecoder.string,
-  id: JsonDecoder.number
-}, 'account.getProfileInfo decoder')
-
-const accountGetProfileInfo = async (vk: VK): Promise<AccountGetProfileInfoResponse> => (
-  await makeVkRequest(
-    'account.getProfileInfo',
-    vk.accessToken,
-    accountGetProfileInfoDecoder
-  )
+const accountGetProfileInfoDecoder = JsonDecoder.object<AccountGetProfileInfoResponse>(
+  {
+    first_name: JsonDecoder.string,
+    last_name: JsonDecoder.string,
+    id: JsonDecoder.number,
+  },
+  'account.getProfileInfo decoder'
 )
+
+const accountGetProfileInfo = async (vk: VK): Promise<AccountGetProfileInfoResponse> =>
+  await makeVkRequest('account.getProfileInfo', vk.accessToken, accountGetProfileInfoDecoder)
 
 export default accountGetProfileInfo
