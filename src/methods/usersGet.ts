@@ -3,8 +3,9 @@ import VK from '..'
 import makeVkRequest from '../utils/makeVkRequest'
 
 export enum Sex {
-  Male = 0,
+  Unknown = 0,
   Female = 1,
+  Male = 2,
 }
 
 export interface UsersGetUser {
