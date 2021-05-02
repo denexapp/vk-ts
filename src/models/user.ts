@@ -22,7 +22,7 @@ export const userDecoder = JsonDecoder.object<User>(
     last_name: JsonDecoder.string,
     can_access_closed: JsonDecoder.boolean,
     is_closed: JsonDecoder.boolean,
-    sex: JsonDecoder.oneOf([JsonDecoder.isExactly(0), JsonDecoder.isExactly(1)], 'Sex'),
+    sex: JsonDecoder.oneOf([JsonDecoder.isExactly(0), JsonDecoder.isExactly(1), JsonDecoder.isExactly(2)], 'Sex'),
   },
   'UsersGetUser decoder'
 )
