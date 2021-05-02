@@ -3,10 +3,11 @@ import docsGet from './methods/docsGet'
 import messagesDelete from './methods/messagesDelete'
 import messagesGetByConversationMessageId from './methods/messagesGetByConversationMessageId'
 import messagesGetConversationMembers from './methods/messagesGetConversationMembers'
+import messagesRemoveChatUser from './methods/messagesRemoveChatUser'
 import messagesSearch from './methods/messagesSearch'
 import messagesSend from './methods/messagesSend'
-import utilsResolveScreenName from './methods/utilsResolveScreenName'
 import usersGet from './methods/usersGet'
+import utilsResolveScreenName from './methods/utilsResolveScreenName'
 
 class VK {
   accessToken: string
@@ -18,6 +19,7 @@ class VK {
   messagesDelete = messagesDelete.bind(this, this)
   messagesGetByConversationMessageId = messagesGetByConversationMessageId.bind(this, this)
   messagesGetConversationMembers = messagesGetConversationMembers.bind(this, this)
+  messagesRemoveChatUser = messagesRemoveChatUser.bind(this, this)
   messagesSearch = messagesSearch.bind(this, this)
   messagesSend = messagesSend.bind(this, this)
   accountGetProfileInfo = accountGetProfileInfo.bind(this, this)
@@ -26,6 +28,6 @@ class VK {
   docsGet = docsGet.bind(this, this)
 }
 
-export { default as VkError, VkErrorCode } from './utils/vkError'
 export * from './models'
+export { default as VkError, VkErrorCode } from './utils/vkError'
 export default VK
