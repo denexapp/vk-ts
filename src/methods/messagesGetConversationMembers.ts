@@ -1,5 +1,6 @@
 import { JsonDecoder } from 'ts.data.json'
 import VK from '..'
+import { User, userDecoder } from '../models/user'
 import makeVkRequest from '../utils/makeVkRequest'
 
 export interface ConversationMember {
@@ -12,7 +13,7 @@ export interface ConversationMember {
 export interface MessagesGetConversationMembersResponse {
   count: number
   items: Array<ConversationMember>
-  profiles: Array<unknown>
+  profiles: Array<User>
   groups: Array<unknown>
 }
 
@@ -30,7 +31,7 @@ const messagesGetConversationMembersDecoder = JsonDecoder.object<MessagesGetConv
   {
     count: JsonDecoder.number,
     items: JsonDecoder.array(conversationMemberDecoder, 'Items decoder'),
-    profiles: JsonDecoder.array(JsonDecoder.succeed, 'Profiles decoder'),
+    profiles: JsonDecoder.array(userDecoder, 'Profiles decoder'),
     groups: JsonDecoder.array(JsonDecoder.succeed, 'Groups decoder'),
   },
   'messages.getConversationMembers decoder'
@@ -42,6 +43,7 @@ const messagesGetConversationMembers = async (
 ): Promise<MessagesGetConversationMembersResponse> =>
   await makeVkRequest('messages.getConversationMembers', vk.accessToken, messagesGetConversationMembersDecoder, {
     peer_id: peerId,
+    fields: 'sex',
   })
 
 export default messagesGetConversationMembers
