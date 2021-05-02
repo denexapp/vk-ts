@@ -27,5 +27,5 @@ class VK {
 }
 
 export { default as VkError, VkErrorCode } from './utils/vkError'
-export * as models from './models'
+export * from './models'
 export default VK
