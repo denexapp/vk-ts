@@ -13,7 +13,10 @@ const decode = <T>(body: unknown, decoder: JsonDecoder.Decoder<T>): T => {
 
     console.error(`
 Can't decode this object:
-${stringifiedObject}
+${stringifiedObject},
+
+Error:
+${result.error}
 `)
     throw new VkError(VkErrorCode.VkTsUnknownError, result.error)
   }
