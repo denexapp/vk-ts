@@ -1,6 +1,8 @@
 export enum VkErrorCode {
   VkTsUnknownError = 0,
+  NoAccess = 15,
   NoAccessToTheConversation = 917,
+  NoUserInChat = 935,
 }
 
 class VkError extends Error {

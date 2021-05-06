@@ -25,6 +25,12 @@ const makeVkRequest = async <T>(
     if (value.error.error_code === VkErrorCode.NoAccessToTheConversation) {
       throw new VkError(VkErrorCode.NoAccessToTheConversation, value.error.error_msg)
     }
+    if (value.error.error_code === VkErrorCode.NoAccess) {
+      throw new VkError(VkErrorCode.NoAccess, value.error.error_msg)
+    }
+    if (value.error.error_code === VkErrorCode.NoUserInChat) {
+      throw new VkError(VkErrorCode.NoUserInChat, value.error.error_msg)
+    }
     throw new VkError(
       VkErrorCode.VkTsUnknownError,
       `VK api responded with error:\nCode: ${value.error.error_code}\n${value.error.error_msg}`
