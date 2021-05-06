@@ -20,8 +20,8 @@ export const userDecoder = JsonDecoder.object<User>(
     id: JsonDecoder.number,
     first_name: JsonDecoder.string,
     last_name: JsonDecoder.string,
-    can_access_closed: JsonDecoder.boolean,
-    is_closed: JsonDecoder.boolean,
+    can_access_closed: JsonDecoder.oneOf([JsonDecoder.boolean, JsonDecoder.isUndefined(false)], 'Can access closed'),
+    is_closed: JsonDecoder.oneOf([JsonDecoder.boolean, JsonDecoder.isUndefined(false)], 'Is closed'),
     sex: JsonDecoder.oneOf([JsonDecoder.isExactly(0), JsonDecoder.isExactly(1), JsonDecoder.isExactly(2)], 'Sex'),
   },
   'UsersGetUser decoder'
