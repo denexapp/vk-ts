@@ -1,7 +1,7 @@
 import consts from '../utils/consts'
 
 export interface VkLinkParams {
-  [key: string]: string | number | boolean | undefined
+  [key: string]: Array<number> | string | number | boolean | undefined
 }
 
 interface TransformedParams {
