@@ -1,5 +1,5 @@
 # VK TypeScript
-Typesafe lightweight library to make requests to VK api.
+Typesafe lightweight library to make requests to VK api
 
 [![GitHub license](https://img.shields.io/github/license/denexapp/vk-ts)](https://github.com/denexapp/vk-ts/blob/master/LICENSE) [![npm version](https://img.shields.io/npm/v/vk-ts.svg)](https://www.npmjs.com/package/vk-ts)
 
@@ -31,3 +31,18 @@ console.log(`Hello, ${info.first_name}!`)
 ## Cons
 * Small coverage of api
 * No built-in authentication
+
+## Available api methods
+* account.getProfileInfo
+* docs.get
+* messages.delete
+* messages.messagesGetByConversationMessageId
+* messages.messagesGetConversationMembers
+* messages.messagesRemoveChatUser
+* messages.messagesSearch
+* messages.messagesSend
+* messages.messagesSetActivity
+* users.get
+* utils.resolveScreenName
+
+Haven't found the method you're looking for? Open an issue [here](https://github.com/denexapp/vk-ts/issues/new)
