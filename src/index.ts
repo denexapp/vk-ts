@@ -1,5 +1,6 @@
 import accountGetProfileInfo from './methods/accountGetProfileInfo'
 import docsGet from './methods/docsGet'
+import docsGetUploadServer from './methods/docsGetUploadServer'
 import messagesDelete from './methods/messagesDelete'
 import messagesGetByConversationMessageId from './methods/messagesGetByConversationMessageId'
 import messagesGetConversationMembers from './methods/messagesGetConversationMembers'
@@ -26,6 +27,7 @@ class VK {
   utilsResolveScreenName = utilsResolveScreenName.bind(this, this)
   usersGet = usersGet.bind(this, this)
   docsGet = docsGet.bind(this, this)
+  docsGetUploadServer = docsGetUploadServer.bind(this, this)
 }
 
 export * from './models'
