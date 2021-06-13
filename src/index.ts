@@ -1,6 +1,8 @@
 import accountGetProfileInfo from './methods/accountGetProfileInfo'
 import docsGet from './methods/docsGet'
 import docsGetUploadServer from './methods/docsGetUploadServer'
+import docsSave from './methods/docsSave'
+import docsUpload from './methods/docsUpload'
 import messagesDelete from './methods/messagesDelete'
 import messagesGetByConversationMessageId from './methods/messagesGetByConversationMessageId'
 import messagesGetConversationMembers from './methods/messagesGetConversationMembers'
@@ -28,6 +30,8 @@ class VK {
   usersGet = usersGet.bind(this, this)
   docsGet = docsGet.bind(this, this)
   docsGetUploadServer = docsGetUploadServer.bind(this, this)
+  docsSave = docsSave.bind(this, this)
+  docsUpload = docsUpload.bind(this, this)
 }
 
 export * from './models'

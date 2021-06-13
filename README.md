@@ -47,6 +47,8 @@ console.log(`Hello, ${info.first_name}!`)
 - account.getProfileInfo
 - docs.get
 - docs.getUploadServer
+- docs.save
+- docs.upload
 - messages.delete
 - messages.messagesGetByConversationMessageId
 - messages.messagesGetConversationMembers
