@@ -1,4 +1,4 @@
-import fetch from 'cross-fetch'
+import fetch from 'node-fetch'
 import { JsonDecoder } from 'ts.data.json'
 import decode from './decode'
 import generateVkLink, { VkLinkParams } from './generateVkLink'
