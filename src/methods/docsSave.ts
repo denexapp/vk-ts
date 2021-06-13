@@ -2,10 +2,35 @@ import { JsonDecoder } from 'ts.data.json'
 import VK from '..'
 import makeVkRequest from '../utils/makeVkRequest'
 
-export type DocsSaveResponse = [unknown]
+export interface SavedDocResponse {
+  type: 'doc'
+  doc: unknown
+}
+export interface SavedAudioMessageResponse {
+  type: 'audio_message'
+  audio_message: unknown
+}
 
-const docsGetUploadServerDecoder: JsonDecoder.Decoder<DocsSaveResponse> = JsonDecoder.tuple(
-  [JsonDecoder.succeed],
+export type DocsSaveResponse = SavedDocResponse | SavedAudioMessageResponse
+
+const savedDocResponseDecoder = JsonDecoder.object<SavedDocResponse>(
+  {
+    type: JsonDecoder.isExactly('doc'),
+    doc: JsonDecoder.succeed,
+  },
+  'SavedDocResponse'
+)
+
+const savedAudioMessageResponseDecoder = JsonDecoder.object<SavedAudioMessageResponse>(
+  {
+    type: JsonDecoder.isExactly('audio_message'),
+    audio_message: JsonDecoder.succeed,
+  },
+  'SavedAudioMessageResponse'
+)
+
+const docsGetUploadServerDecoder = JsonDecoder.oneOf<DocsSaveResponse>(
+  [savedDocResponseDecoder, savedAudioMessageResponseDecoder],
   'docs.save decoder'
 )
 
