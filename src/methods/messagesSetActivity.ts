@@ -13,7 +13,7 @@ const messagesSetActivity = async (
   peerId: number,
   type: MessagesActivityType
 ): Promise<MessagesSetActivityResponse> => {
-  return await makeVkRequest('mmessages.setActivity', vk.accessToken, messageSetActivityDecoder, {
+  return await makeVkRequest('mmessages.setActivity', vk.accessToken, vk.settings.lang, messageSetActivityDecoder, {
     type,
     peer_id: peerId,
   })

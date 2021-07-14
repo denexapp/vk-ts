@@ -25,13 +25,20 @@ const transformParams = (params?: VkLinkParams) => {
   return result
 }
 
-const generateVkLink = (methodName: string, accessToken: string, params?: VkLinkParams): string => {
+const generateVkLink = (
+  methodName: string,
+  accessToken: string,
+  lang: number | undefined,
+  params?: VkLinkParams
+): string => {
   const transformedParams = transformParams(params)
+  const transfomedLang = transformParams({ lang })
 
   const query = new URLSearchParams({
+    ...transformedParams,
+    ...transfomedLang,
     access_token: accessToken,
     v: consts.vkApiVersion,
-    ...transformedParams,
   })
 
   return `https://api.vk.com/method/${methodName}?${query}`

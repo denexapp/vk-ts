@@ -18,6 +18,6 @@ const accountGetProfileInfoDecoder = JsonDecoder.object<AccountGetProfileInfoRes
 )
 
 const accountGetProfileInfo = async (vk: VK): Promise<AccountGetProfileInfoResponse> =>
-  await makeVkRequest('account.getProfileInfo', vk.accessToken, accountGetProfileInfoDecoder)
+  await makeVkRequest('account.getProfileInfo', vk.accessToken, vk.settings.lang, accountGetProfileInfoDecoder)
 
 export default accountGetProfileInfo

@@ -41,9 +41,15 @@ const messagesGetConversationMembers = async (
   vk: VK,
   peerId: number
 ): Promise<MessagesGetConversationMembersResponse> =>
-  await makeVkRequest('messages.getConversationMembers', vk.accessToken, messagesGetConversationMembersDecoder, {
-    peer_id: peerId,
-    fields: 'sex',
-  })
+  await makeVkRequest(
+    'messages.getConversationMembers',
+    vk.accessToken,
+    vk.settings.lang,
+    messagesGetConversationMembersDecoder,
+    {
+      peer_id: peerId,
+      fields: 'sex',
+    }
+  )
 
 export default messagesGetConversationMembers

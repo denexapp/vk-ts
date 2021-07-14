@@ -8,10 +8,11 @@ import vkResponseDecoder from './vkResponseDecoder'
 const makeVkRequest = async <T>(
   methodName: string,
   accessToken: string,
+  lang: number | undefined,
   decoder: JsonDecoder.Decoder<T>,
   params?: VkLinkParams
 ): Promise<T> => {
-  const response = await fetch(generateVkLink(methodName, accessToken, params))
+  const response = await fetch(generateVkLink(methodName, accessToken, lang, params))
 
   if (!response.ok) {
     throw new VkError(VkErrorCode.VkTsUnknownError, `Unexpected response status ${response.status}`)

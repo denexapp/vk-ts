@@ -33,9 +33,15 @@ const utilsResolveScreenNameDecoder: JsonDecoder.Decoder<UtilsResolveScreenNameR
 )
 
 const utilsResolveScreenName = async (vk: VK, screenName: string): Promise<UtilsResolveScreenNameResponse> => {
-  return await makeVkRequest('utils.resolveScreenName', vk.accessToken, utilsResolveScreenNameDecoder, {
-    screen_name: screenName,
-  })
+  return await makeVkRequest(
+    'utils.resolveScreenName',
+    vk.accessToken,
+    vk.settings.lang,
+    utilsResolveScreenNameDecoder,
+    {
+      screen_name: screenName,
+    }
+  )
 }
 
 export default utilsResolveScreenName

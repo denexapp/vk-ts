@@ -11,7 +11,7 @@ const messagesRemoveChatUser = async (
   chat_id: number,
   user_id: number
 ): Promise<MessagesRemoveChatUserResponse> =>
-  await makeVkRequest('messages.removeChatUser', vk.accessToken, messagesRemoveChatUserDecoder, {
+  await makeVkRequest('messages.removeChatUser', vk.accessToken, vk.settings.lang, messagesRemoveChatUserDecoder, {
     chat_id,
     user_id,
   })

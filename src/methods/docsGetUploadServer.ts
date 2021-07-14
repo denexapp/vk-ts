@@ -14,7 +14,7 @@ const docsGetUploadServerDecoder = JsonDecoder.object<DocsGetUploadServerRespons
 )
 
 const docsGetUploadServer = async (vk: VK, groupId?: number): Promise<DocsGetUploadServerResponse> =>
-  await makeVkRequest('docs.getUploadServer', vk.accessToken, docsGetUploadServerDecoder, {
+  await makeVkRequest('docs.getUploadServer', vk.accessToken, vk.settings.lang, docsGetUploadServerDecoder, {
     group_id: groupId,
   })
 

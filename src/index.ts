@@ -12,11 +12,24 @@ import messagesSend from './methods/messagesSend'
 import usersGet from './methods/usersGet'
 import utilsResolveScreenName from './methods/utilsResolveScreenName'
 
+interface VkSettings {
+  lang: number | undefined
+}
+
+const defaultSettings: VkSettings = {
+  lang: undefined, // English
+}
+
 class VK {
   accessToken: string
+  settings: VkSettings
 
-  constructor(accessToken: string) {
+  constructor(accessToken: string, settings?: Partial<VkSettings>) {
     this.accessToken = accessToken
+    this.settings = {
+      ...defaultSettings,
+      ...settings,
+    }
   }
 
   messagesDelete = messagesDelete.bind(this, this)

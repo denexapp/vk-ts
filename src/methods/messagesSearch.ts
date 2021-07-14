@@ -8,7 +8,7 @@ export type MessagesSearchResponse = ArrayResponse<Message>
 const messagesSearchDecoder = arrayResponseDecoder<Message>(messageDecoder, 'messages.search Decoder')
 
 const messagesSearch = async (vk: VK, query: string): Promise<MessagesSearchResponse> =>
-  await makeVkRequest('messages.search', vk.accessToken, messagesSearchDecoder, {
+  await makeVkRequest('messages.search', vk.accessToken, vk.settings.lang, messagesSearchDecoder, {
     q: query,
   })
 

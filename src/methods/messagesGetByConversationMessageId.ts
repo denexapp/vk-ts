@@ -18,6 +18,7 @@ const messagesGetByConversationMessageId = async (
   await makeVkRequest(
     'messages.getByConversationMessageId',
     vk.accessToken,
+    vk.settings.lang,
     messagesGetByConversationMessageIdDecoder,
     {
       peer_id: peerId,

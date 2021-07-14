@@ -41,7 +41,7 @@ const docsSave = async (
   tags?: string,
   returnTags?: boolean
 ): Promise<DocsSaveResponse> =>
-  await makeVkRequest('docs.save', vk.accessToken, docsGetUploadServerDecoder, {
+  await makeVkRequest('docs.save', vk.accessToken, vk.settings.lang, docsGetUploadServerDecoder, {
     file,
     title,
     tags,

@@ -25,7 +25,7 @@ const documentDecoder = JsonDecoder.object<Document>(
 const docsGetDecoder = arrayResponseDecoder<Document>(documentDecoder, 'docs.get decoder')
 
 const docsGet = async (vk: VK, count?: number, offset?: number, ownerId?: number): Promise<DocsGetResponse> =>
-  await makeVkRequest('docs.get', vk.accessToken, docsGetDecoder, {
+  await makeVkRequest('docs.get', vk.accessToken, vk.settings.lang, docsGetDecoder, {
     count,
     offset,
     owner_id: ownerId,

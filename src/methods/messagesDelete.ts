@@ -50,7 +50,7 @@ const messagesDelete: MessagesDelete = async (
     deleteForAll = param3
   }
 
-  return await makeVkRequest('messages.delete', vk.accessToken, messagesDeleteDecoder, {
+  return await makeVkRequest('messages.delete', vk.accessToken, vk.settings.lang, messagesDeleteDecoder, {
     message_ids: messageIds,
     conversation_message_ids: conversationMessageIds,
     peer_id: peerId,

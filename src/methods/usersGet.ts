@@ -8,7 +8,7 @@ export type UsersGetResponse = Array<User>
 const usersGetDecoder: JsonDecoder.Decoder<UsersGetResponse> = JsonDecoder.array(userDecoder, 'users.get decoder')
 
 const usersGet = async (vk: VK, userIds?: Array<number>): Promise<UsersGetResponse> =>
-  await makeVkRequest('users.get', vk.accessToken, usersGetDecoder, {
+  await makeVkRequest('users.get', vk.accessToken, vk.settings.lang, usersGetDecoder, {
     user_ids: userIds?.join(' '),
     fields: 'sex',
   })
