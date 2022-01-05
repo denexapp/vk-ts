@@ -7,9 +7,12 @@ export interface MessagesDelete {
   (vk: VK, messageId: number, deleteForAll: boolean): Promise<MessagesDeleteResponse>
   (vk: VK, messageIds: Array<number>, deleteForAll: boolean): Promise<MessagesDeleteResponse>
   (vk: VK, conversationMessageId: number, peerId: number, deleteForAll: boolean): Promise<MessagesDeleteResponse>
-  (vk: VK, conversationMessageIds: Array<number>, peerId: number, deleteForAll: boolean): Promise<
-    MessagesDeleteResponse
-  >
+  (
+    vk: VK,
+    conversationMessageIds: Array<number>,
+    peerId: number,
+    deleteForAll: boolean
+  ): Promise<MessagesDeleteResponse>
 }
 
 export type DeletedStatus = 0 | 1

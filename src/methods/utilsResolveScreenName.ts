@@ -13,24 +13,23 @@ export interface UtilsResolveScreenNameSuccessResponse {
 
 export type UtilsResolveScreenNameResponse = UtilsResolveScreenNameEmptyResponse | UtilsResolveScreenNameSuccessResponse
 
-const utilsResolveScreenNameDecoder: JsonDecoder.Decoder<UtilsResolveScreenNameResponse> = JsonDecoder.oneOf<
-  UtilsResolveScreenNameResponse
->(
-  [
-    JsonDecoder.tuple([], 'UtilsResolveScreenNameEmptyResponse'),
-    JsonDecoder.object(
-      {
-        type: JsonDecoder.oneOf<ScreenNameType>(
-          [JsonDecoder.isExactly('user'), JsonDecoder.isExactly('group'), JsonDecoder.isExactly('application')],
-          'ScreenNameType'
-        ),
-        object_id: JsonDecoder.number,
-      },
-      'UtilsResolveScreenNameSuccessResponse'
-    ),
-  ],
-  'UtilsResolveScreenNameResponse'
-)
+const utilsResolveScreenNameDecoder: JsonDecoder.Decoder<UtilsResolveScreenNameResponse> =
+  JsonDecoder.oneOf<UtilsResolveScreenNameResponse>(
+    [
+      JsonDecoder.tuple([], 'UtilsResolveScreenNameEmptyResponse'),
+      JsonDecoder.object(
+        {
+          type: JsonDecoder.oneOf<ScreenNameType>(
+            [JsonDecoder.isExactly('user'), JsonDecoder.isExactly('group'), JsonDecoder.isExactly('application')],
+            'ScreenNameType'
+          ),
+          object_id: JsonDecoder.number,
+        },
+        'UtilsResolveScreenNameSuccessResponse'
+      ),
+    ],
+    'UtilsResolveScreenNameResponse'
+  )
 
 const utilsResolveScreenName = async (vk: VK, screenName: string): Promise<UtilsResolveScreenNameResponse> => {
   return await makeVkRequest(
