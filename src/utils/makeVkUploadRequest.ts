@@ -4,7 +4,11 @@ import { JsonDecoder } from 'ts.data.json'
 import decode from './decode'
 import VkError, { VkErrorCode } from './vkError'
 
-const makeVkUploadRequest = async <T>(url: string, file: NodeJS.ReadableStream | Buffer, decoder: JsonDecoder.Decoder<T>): Promise<T> => {
+const makeVkUploadRequest = async <T>(
+  url: string,
+  file: NodeJS.ReadableStream | Buffer,
+  decoder: JsonDecoder.Decoder<T>
+): Promise<T> => {
   const form = new FormData()
   form.append('file', file)
 
