@@ -9,7 +9,7 @@
     "url": "https://github.com/denexapp/vk-ts"
   },
   "module": "dist/vk-ts.esm.js",
-  "typings": "dist/index.d.ts",
+  "typings": "dist/types/index.d.ts",
   "files": [
     "dist",
     "src"
