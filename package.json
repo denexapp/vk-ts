@@ -16,9 +16,9 @@
   ],
   "scripts": {
     "analyze": "size-limit --why",
-    "build": "dts build --format cjs",
+    "build": "dts build",
     "lint": "dts lint",
-    "prepare": "dts build --format cjs",
+    "prepare": "dts build",
     "size": "size-limit",
     "start": "dts watch",
     "test": "dts test"
