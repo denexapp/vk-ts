@@ -1,26 +1,31 @@
 {
+  "name": "vk-ts",
   "version": "0.20.0",
   "license": "MIT",
+  "author": "Denis Mukhametov",
   "main": "dist/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/denexapp/vk-ts"
+  },
+  "module": "dist/vk-ts.esm.js",
   "typings": "dist/index.d.ts",
   "files": [
     "dist",
     "src"
   ],
-  "engines": {
-    "node": ">=10"
-  },
   "scripts": {
-    "start": "tsdx watch",
-    "build": "tsdx build",
-    "test": "tsdx test",
-    "lint": "tsdx lint",
-    "prepare": "tsdx build"
+    "analyze": "size-limit --why",
+    "build": "dts build",
+    "lint": "dts lint",
+    "prepare": "dts build",
+    "size": "size-limit",
+    "start": "dts watch",
+    "test": "dts test"
   },
-  "peerDependencies": {},
   "husky": {
     "hooks": {
-      "pre-commit": "tsdx lint"
+      "pre-commit": "dts lint"
     }
   },
   "prettier": {
@@ -29,28 +34,35 @@
     "singleQuote": true,
     "trailingComma": "es5"
   },
-  "name": "vk-ts",
-  "author": "Denis Mukhametov <denis.mukhametov@gmail.com> (https://denexapp.me/)",
-  "module": "dist/vk-ts.esm.js",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/denexapp/vk-ts"
+  "jest": {
+    "testEnvironment": "node"
   },
+  "peerDependencies": {},
+  "engines": {
+    "node": ">=12"
+  },
+  "size-limit": [
+    {
+      "path": "dist/vk-ts.cjs.production.min.js",
+      "limit": "10 KB"
+    },
+    {
+      "path": "dist/vk-ts.esm.js",
+      "limit": "10 KB"
+    }
+  ],
   "devDependencies": {
-    "@types/node-fetch": "^2.5.10",
-    "husky": "^4.2.5",
-    "tsdx": "^0.14.1",
-    "tslib": "^2.0.0",
-    "typescript": "^4.2.4"
+    "@size-limit/preset-small-lib": "^7.0.5",
+    "@tsconfig/recommended": "^1.0.1",
+    "dts-cli": "^1.1.5",
+    "husky": "^7.0.4",
+    "size-limit": "^7.0.5",
+    "tslib": "^2.3.1",
+    "typescript": "^4.5.4"
   },
   "dependencies": {
     "form-data": "^4.0.0",
-    "node-fetch": "^2.6.1",
-    "ts.data.json": "^1.7.0"
-  },
-  "resolutions": {
-    "**/@typescript-eslint/eslint-plugin": "^4.11.1",
-    "**/@typescript-eslint/parser": "^4.11.1",
-    "**/typescript": "^4.1.3"
+    "node-fetch": "^3.1.0",
+    "ts.data.json": "^2.1.0"
   }
 }
