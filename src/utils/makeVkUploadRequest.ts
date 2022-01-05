@@ -6,11 +6,12 @@ import VkError, { VkErrorCode } from './vkError'
 
 const makeVkUploadRequest = async <T>(
   url: string,
+  fieldName: string,
   file: NodeJS.ReadableStream | Buffer,
-  decoder: JsonDecoder.Decoder<T>
+  decoder: JsonDecoder.Decoder<T>,
 ): Promise<T> => {
   const form = new FormData()
-  form.append('file', file)
+  form.append(fieldName, file)
 
   const response = await fetch(url, { method: 'POST', body: form })
 

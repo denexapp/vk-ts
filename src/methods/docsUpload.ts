@@ -14,6 +14,6 @@ const docsUploadDecoder = JsonDecoder.object<DocsUploadResponse>(
 )
 
 const docsUpload = async (_vk: VK, url: string, file: NodeJS.ReadableStream | Buffer): Promise<DocsUploadResponse> =>
-  await makeVkUploadRequest(url, file, docsUploadDecoder)
+  await makeVkUploadRequest(url, 'file', file, docsUploadDecoder)
 
 export default docsUpload

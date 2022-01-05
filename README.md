@@ -58,5 +58,7 @@ console.log(`Hello, ${info.first_name}!`)
 - messages.messagesSetActivity
 - users.get
 - utils.resolveScreenName
+- video.save
+- video.upload
 
 Haven't found the method you're looking for? Open an issue [here](https://github.com/denexapp/vk-ts/issues/new)

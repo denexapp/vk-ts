@@ -11,6 +11,8 @@ import messagesSearch from './methods/messagesSearch'
 import messagesSend from './methods/messagesSend'
 import usersGet from './methods/usersGet'
 import utilsResolveScreenName from './methods/utilsResolveScreenName'
+import videoSave from './methods/videoSave'
+import videoUpload from './methods/videoUpload'
 
 interface VkSettings {
   lang: number | undefined
@@ -45,6 +47,8 @@ class VK {
   docsGetUploadServer = docsGetUploadServer.bind(this, this)
   docsSave = docsSave.bind(this, this)
   docsUpload = docsUpload.bind(this, this)
+  videoSave = videoSave.bind(this, this)
+  videoUpload = videoUpload.bind(this, this)
 }
 
 export * from './models'
