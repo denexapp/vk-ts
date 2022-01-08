@@ -63,6 +63,7 @@
   "dependencies": {
     "form-data": "^4.0.0",
     "node-fetch": "^2.6.6",
+    "stream-mime-type": "^1.0.2",
     "ts.data.json": "^2.1.0"
   }
 }

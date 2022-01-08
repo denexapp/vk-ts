@@ -1,5 +1,6 @@
 import { JsonDecoder } from 'ts.data.json'
 import VK from '..'
+import consts from '../utils/consts'
 import makeVkUploadRequest from '../utils/makeVkUploadRequest'
 
 export interface VideoUploadResponse {
@@ -19,6 +20,7 @@ const videoUpload = async (
   _vk: VK,
   url: string,
   videoFile: NodeJS.ReadableStream | Buffer
-): Promise<VideoUploadResponse> => await makeVkUploadRequest(url, 'video_file', videoFile, videoUploadDecoder)
+): Promise<VideoUploadResponse> =>
+  await makeVkUploadRequest(url, 'video_file', videoFile, videoUploadDecoder, consts.defaultVideoMimeType)
 
 export default videoUpload
