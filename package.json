@@ -1,6 +1,6 @@
 {
   "name": "vk-ts",
-  "version": "0.22.6-beta.4",
+  "version": "0.22.6",
   "license": "MIT",
   "author": "Denis Mukhametov",
   "main": "dist/index.js",
