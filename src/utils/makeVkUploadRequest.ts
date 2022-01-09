@@ -4,25 +4,30 @@ import { JsonDecoder } from 'ts.data.json'
 import decode from './decode'
 import VkError, { VkErrorCode } from './vkError'
 import { getMimeType } from 'stream-mime-type'
+import { UploadSource } from '..'
 
 const makeVkUploadRequest = async <T>(
   url: string,
   fieldName: string,
-  file: NodeJS.ReadableStream | Buffer,
+  uploadSource: UploadSource,
   decoder: JsonDecoder.Decoder<T>,
-  defaultContentType?: string
+  defaultContentType?: string,
+  filename?: string
 ): Promise<T> => {
   const form = new FormData()
 
-  if (file instanceof Buffer) {
+  if (uploadSource.source instanceof Buffer) {
     // file is a buffer
-    const { mime } = await getMimeType(file, { strict: true })
-    form.append(fieldName, file, { contentType: mime ?? defaultContentType })
+    const { mime } = await getMimeType(uploadSource.source, { strict: true })
+    form.append(fieldName, uploadSource, { contentType: mime ?? defaultContentType })
   } else {
     // file is a stream
-    const { mime, stream } = await getMimeType(file, { strict: true })
-    getMimeType(file, { strict: true })
-    form.append(fieldName, stream, { contentType: mime ?? defaultContentType })
+    const { mime, stream } = await getMimeType(uploadSource.source, { strict: true, filename })
+    form.append(fieldName, stream, {
+      contentType: mime ?? defaultContentType,
+      filename,
+      knownLength: uploadSource.contentLength,
+    })
   }
 
   const response = await fetch(url, { method: 'POST', body: form })

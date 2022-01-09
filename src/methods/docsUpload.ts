@@ -1,5 +1,5 @@
 import { JsonDecoder } from 'ts.data.json'
-import VK from '..'
+import VK, { UploadSource } from '..'
 import makeVkUploadRequest from '../utils/makeVkUploadRequest'
 
 export interface DocsUploadResponse {
@@ -13,7 +13,7 @@ const docsUploadDecoder = JsonDecoder.object<DocsUploadResponse>(
   'docs.upload decoder'
 )
 
-const docsUpload = async (_vk: VK, url: string, file: NodeJS.ReadableStream | Buffer): Promise<DocsUploadResponse> =>
+const docsUpload = async (_vk: VK, url: string, file: UploadSource): Promise<DocsUploadResponse> =>
   await makeVkUploadRequest(url, 'file', file, docsUploadDecoder)
 
 export default docsUpload
