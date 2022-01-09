@@ -40,7 +40,7 @@ const videoSave = async (
     wallpost,
     repeat,
     album_id: albumId,
-    groupId: groupId,
+    group_id: groupId,
   })
 
 export default videoSave
